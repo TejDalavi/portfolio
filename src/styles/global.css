@@ -1,0 +1,105 @@
+:root {
+  --bg: #060810;
+  --s1: #0c1018;
+  --s2: #111620;
+  --card: #141926;
+  --border: #1e2535;
+  --accent: #00ffc3;
+  --accent-dim: rgba(0, 255, 195, 0.08);
+  --accent2: #3d8bff;
+  --accent3: #ff6b35;
+  --text: #dde4f5;
+  --muted: #5a6480;
+  --mono: 'Space Mono', monospace;
+  --body: 'Outfit', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(0, 255, 195, 0.2);
+  color: #fff;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ── SECTION COMMON ── */
+section {
+  padding: 96px 56px;
+}
+
+.sec-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.sec-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+.sec-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  margin-bottom: 48px;
+}
+.sec-title span { color: var(--accent); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+@keyframes gridDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 60px; }
+}
+
+@keyframes float {
+  0%   { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10%  { opacity: 0.4; }
+  90%  { opacity: 0.1; }
+  100% { transform: translateY(-10vh) translateX(var(--dx, 20px)); opacity: 0; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  section { padding: 64px 20px; }
+  .sec-title { font-size: 1.8rem; }
+}
